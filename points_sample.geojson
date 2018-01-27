@@ -1,0 +1,16 @@
+{
+"type": "FeatureCollection",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::2056" } },
+"features": [
+{ "type": "Feature", "properties": { "id": 1, "NO": "A", "E": 2552389.38, "N": 1197894.5, "Z": 478.8 }, "geometry": { "type": "Point", "coordinates": [ 2552389.375519100110978, 1197894.501005448633805 ] } },
+{ "type": "Feature", "properties": { "id": 2, "NO": "B", "E": 2552447.88, "N": 1197872.0, "Z": 475.5 }, "geometry": { "type": "Point", "coordinates": [ 2552447.875519160181284, 1197872.001005421159789 ] } },
+{ "type": "Feature", "properties": { "id": 3, "NO": "C", "E": 2552494.38, "N": 1197828.25, "Z": 473.6 }, "geometry": { "type": "Point", "coordinates": [ 2552494.375519214197993, 1197828.251005389494821 ] } },
+{ "type": "Feature", "properties": { "id": 4, "NO": "F", "E": 2552521.88, "N": 1197932.75, "Z": 476.5 }, "geometry": { "type": "Point", "coordinates": [ 2552521.875519214663655, 1197932.751005437457934 ] } },
+{ "type": "Feature", "properties": { "id": 5, "NO": "G", "E": 2552540.63, "N": 1197882.25, "Z": 475.1 }, "geometry": { "type": "Point", "coordinates": [ 2552540.625519244465977, 1197882.251005402067676 ] } },
+{ "type": "Feature", "properties": { "id": 6, "NO": "H", "E": 2552532.63, "N": 1197860.5, "Z": 474.1 }, "geometry": { "type": "Point", "coordinates": [ 2552532.625519241672009, 1197860.501005395548418 ] } },
+{ "type": "Feature", "properties": { "id": 7, "NO": "D", "E": 2552574.5, "N": 1197754.5, "Z": 468.9 }, "geometry": { "type": "Point", "coordinates": [ 2552574.500519306398928, 1197754.501005328726023 ] } },
+{ "type": "Feature", "properties": { "id": 8, "NO": "I", "E": 2552581.5, "N": 1197856.5, "Z": 471.9 }, "geometry": { "type": "Point", "coordinates": [ 2552581.500519288703799, 1197856.50100538181141 ] } },
+{ "type": "Feature", "properties": { "id": 9, "NO": "J", "E": 2552615.0, "N": 1197813.5, "Z": 469.2 }, "geometry": { "type": "Point", "coordinates": [ 2552615.000519330147654, 1197813.501005352241918 ] } },
+{ "type": "Feature", "properties": { "id": 10, "NO": "E", "E": 2552659.0, "N": 1197675.0, "Z": 463.6 }, "geometry": { "type": "Point", "coordinates": [ 2552659.000519404187799, 1197675.001005270052701 ] } }
+]
+}
