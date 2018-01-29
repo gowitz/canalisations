@@ -32,7 +32,7 @@ def calculLongueur(pd, pa):
     """
     d = getPointGeometry(pd)
     a = getPointGeometry(pa)
-    return round(sqrt(((d[0] - a[0]) ** 2) + ((d[1] - a[1]) ** 2)),2)
+    return sqrt(((d[0] - a[0]) ** 2) + ((d[1] - a[1]) ** 2))
 
 # Section fonctions ------------------------------------------------------------
 
@@ -52,13 +52,31 @@ def getPointGeometry(no):
             break
     return coord
 
+# function calculePente
+def calculPente(pd, pa):
+    """
+        La fonction retourne la pente en % entre les points passes en argument
+
+        :param pd: no point depart
+        :param pa: no point arrivee
+        :type pd: string
+        :type pa: string
+        :return: pente entre pd et pa en %
+        :rtype: float
+    """
+    d = getPointGeometry(pd)
+    a = getPointGeometry(pa)
+    return (d[2] - a[2]) / calculLongueur(pd, pa) * 100
+
 # Section tests ----------------------------------------------------------------
 
 print "=== TEST functions ==="
 print "coordinates for point A expect [ 2552540.625519244465977, 1197882.251005402067676 ]"
 print "-->  : ", getPointGeometry(trace[0])
-print "calculte distance between A and B"
-print calculLongueur("A", "B"), "m"
+print "calculate distance between A and B"
+print round(calculLongueur("A", "B"),2), "m"
+print "calculate slope between A and B"
+print round(calculPente("A", "B"),2), "%"
 
 print type(getPointGeometry(trace[0]))
 
