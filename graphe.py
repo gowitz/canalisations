@@ -93,7 +93,7 @@ def getLine(no):
         :param line: geometrie de la ligne
         :type no: no de ligne
         :return: nombe de sommet
-        :rtype: integer
+        :rtype: list
     """
     line = []
     for feature in dataT['features']:
@@ -136,6 +136,7 @@ print type(getPointGeometry(trace[0]))
 print "=== Line ==="
 print "Multi segments line width :", round(getLineWidth(getLine(9)),2), "m"
 print "Single segments line (A to B) width :", round(getLineWidth(getLine(1)),2), "m"
+
 
 
 """
