@@ -108,9 +108,9 @@ def getLineWidth(line):
         La fonction retourne la longueur d'une ligne passée en argument
 
         :param line: geometrie de la ligne
-        :type no: no de ligne
-        :return: nombe de sommet
-        :rtype: integer
+        :type line: no de ligne
+        :return: longeur de laligne
+        :rtype: float
     """
     lineWidth = 0
     if len(line)>1:
