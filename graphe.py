@@ -8,7 +8,10 @@ from geojson import Feature, Point
 from pprint import pprint
 
 with open('points_sample.geojson') as f:
-    data = json.load(f)
+    dataP = json.load(f)
+
+with open('troncons_sample.geojson') as f:
+    dataT = json.load(f)
 
 #data = json.load(open('chambres.json'))
 
@@ -34,6 +37,20 @@ def calculLongueur(pd, pa):
     a = getPointGeometry(pa)
     return sqrt(((d[0] - a[0]) ** 2) + ((d[1] - a[1]) ** 2))
 
+# function calculLongueur
+def calculLongueurByGeometry(sp, ep):
+    """
+        La fonction retourne distance d'un segment de ligne
+
+        :param sp: coordinates start point
+        :param ep: coordinates end point
+        :type sp: list
+        :type ep: list
+        :return: longueur du segment
+        :rtype: float
+    """
+    return sqrt(((sp[0] - ep[0]) ** 2) + ((sp[1] - ep[1]) ** 2))
+
 # Section fonctions ------------------------------------------------------------
 
 # function getPointGeometry
@@ -46,27 +63,63 @@ def getPointGeometry(no):
         :return: coordonnes point
         :rtype: list
     """
-    for feature in data['features']:
+    for feature in dataP['features']:
         if no == feature['properties']['NO']:
             coord = feature['geometry']['coordinates']
             break
     return coord
 
 # function calculePente
-def calculPente(pd, pa):
+def calculPente(sp, ep):
     """
         La fonction retourne la pente en % entre les points passes en argument
 
-        :param pd: no point depart
-        :param pa: no point arrivee
-        :type pd: string
-        :type pa: string
+        :param sp: start point number
+        :param ep: end point number
+        :type sp: string
+        :type en: string
         :return: pente entre pd et pa en %
         :rtype: float
     """
-    d = getPointGeometry(pd)
-    a = getPointGeometry(pa)
-    return (d[2] - a[2]) / calculLongueur(pd, pa) * 100
+    d = getPointGeometry(sp)
+    a = getPointGeometry(ep)
+    return (d[2] - a[2]) / calculLongueur(sp, ep) * 100
+
+# function getLine
+def getLine(no):
+    """
+        La fonction retourne la geometrie d'une ligne passée en argument
+
+        :param line: geometrie de la ligne
+        :type no: no de ligne
+        :return: nombe de sommet
+        :rtype: integer
+    """
+    line = []
+    for feature in dataT['features']:
+        if no == feature['properties']['id']:
+            line = feature['geometry']['coordinates']
+            break
+    return line
+
+# function getLineWidth
+def getLineWidth(line):
+    """
+        La fonction retourne la longueur d'une ligne passée en argument
+
+        :param line: geometrie de la ligne
+        :type no: no de ligne
+        :return: nombe de sommet
+        :rtype: integer
+    """
+    lineWidth = 0
+    if len(line)>1:
+        for s in range(len(line)-1):
+            sp = line[s]
+            ep = line[s+1]
+            lineWidth += calculLongueurByGeometry(sp, ep)
+
+    return lineWidth
 
 # Section tests ----------------------------------------------------------------
 
@@ -79,6 +132,10 @@ print "calculate slope between A and B"
 print round(calculPente("A", "B"),2), "%"
 
 print type(getPointGeometry(trace[0]))
+
+print "=== Line ==="
+print "Multi segments line width :", round(getLineWidth(getLine(9)),2), "m"
+print "Single segments line (A to B) width :", round(getLineWidth(getLine(1)),2), "m"
 
 
 """
@@ -108,7 +165,7 @@ plt.text(542674.80, 151707.27, '45')
 #plt.ylabel('Altitude')
 #plt.axis([80, 180, 1, 10])
 
-for feature in data['features']:
+for feature in dataP['features']:
     no = feature['properties']['NO']
     coord = feature['geometry']['coordinates']
     coord_x.append(coord[0])
@@ -119,4 +176,4 @@ for feature in data['features']:
 plt.grid(True)
 plt.plot(coord_x, coord_y, "o")
 plt.grid(True)
-plt.show()
+#plt.show()
