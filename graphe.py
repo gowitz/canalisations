@@ -121,6 +121,32 @@ def getLineWidth(line):
 
     return lineWidth
 
+# function getSegments
+def getSegments(axe):
+    """
+        La fonction retourne toutes les coordonnes de l'axe passé en argument
+
+        :param axe: x ou y
+        :type axe: string
+        :return: listing de coodonnees de l'axe
+        :rtype: list
+    """
+    if axe.upper() == "X":
+        i = 0
+    else:
+        i = 1
+
+    c = []
+    for feature in dataT['features']:
+        coord = feature['geometry']['coordinates']
+        for s in coord:
+            c.append(s[i])
+
+
+    return c
+
+
+
 # Section tests ----------------------------------------------------------------
 
 print "=== TEST functions ==="
@@ -173,8 +199,10 @@ for feature in dataP['features']:
     coord_y.append(coord[1])
     plt.text(coord[0], coord[1], no)
 
-
+x = getSegments("X")
+y = getSegments("Y")
 plt.grid(True)
 plt.plot(coord_x, coord_y, "o")
+plt.plot(x,y)
 plt.grid(True)
-#plt.show()
+plt.show()
