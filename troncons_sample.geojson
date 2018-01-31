@@ -2,14 +2,14 @@
 "type": "FeatureCollection",
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::2056" } },
 "features": [
-{ "type": "Feature", "properties": { "id": 1 }, "geometry": { "type": "LineString", "coordinates": [ [ 2552389.375519100110978, 1197894.501005448633805 ], [ 2552447.875519160181284, 1197872.001005421159789 ] ] } },
-{ "type": "Feature", "properties": { "id": 2 }, "geometry": { "type": "LineString", "coordinates": [ [ 2552447.875519160181284, 1197872.001005421159789 ], [ 2552494.375519214197993, 1197828.251005389494821 ] ] } },
-{ "type": "Feature", "properties": { "id": 3 }, "geometry": { "type": "LineString", "coordinates": [ [ 2552494.375519214197993, 1197828.251005389494821 ], [ 2552574.500519306398928, 1197754.501005328726023 ] ] } },
-{ "type": "Feature", "properties": { "id": 4 }, "geometry": { "type": "LineString", "coordinates": [ [ 2552521.875519214663655, 1197932.751005437457934 ], [ 2552540.625519244465977, 1197882.251005402067676 ] ] } },
-{ "type": "Feature", "properties": { "id": 5 }, "geometry": { "type": "LineString", "coordinates": [ [ 2552540.625519244465977, 1197882.251005402067676 ], [ 2552532.625519241672009, 1197860.501005395548418 ] ] } },
-{ "type": "Feature", "properties": { "id": 6 }, "geometry": { "type": "LineString", "coordinates": [ [ 2552532.625519241672009, 1197860.501005395548418 ], [ 2552494.375519214197993, 1197828.251005389494821 ] ] } },
-{ "type": "Feature", "properties": { "id": 7 }, "geometry": { "type": "LineString", "coordinates": [ [ 2552581.500519288703799, 1197856.50100538181141 ], [ 2552615.000519330147654, 1197813.501005352241918 ] ] } },
-{ "type": "Feature", "properties": { "id": 8 }, "geometry": { "type": "LineString", "coordinates": [ [ 2552615.000519330147654, 1197813.501005352241918 ], [ 2552574.500519306398928, 1197754.501005328726023 ] ] } },
-{ "type": "Feature", "properties": { "id": 9 }, "geometry": { "type": "LineString", "coordinates": [ [ 2552574.500519306398928, 1197754.501005328726023 ], [ 2552659.000519404187799, 1197675.001005270052701 ], [ 2552615.000519330147654, 1197813.501005352241918 ], [ 2552574.500519306398928, 1197754.501005328726023 ] ] } }
+{ "type": "Feature", "properties": { "id": 1, "startManhole": "A", "endManhole": "B" }, "geometry": { "type": "LineString", "coordinates": [ [ 2552389.375519100110978, 1197894.501005448633805 ], [ 2552447.875519160181284, 1197872.001005421159789 ] ] } },
+{ "type": "Feature", "properties": { "id": 2, "startManhole": "B", "endManhole": "C" }, "geometry": { "type": "LineString", "coordinates": [ [ 2552447.875519160181284, 1197872.001005421159789 ], [ 2552494.375519214197993, 1197828.251005389494821 ] ] } },
+{ "type": "Feature", "properties": { "id": 3, "startManhole": "C", "endManhole": "D" }, "geometry": { "type": "LineString", "coordinates": [ [ 2552494.375519214197993, 1197828.251005389494821 ], [ 2552574.500519306398928, 1197754.501005328726023 ] ] } },
+{ "type": "Feature", "properties": { "id": 4, "startManhole": "F", "endManhole": "G" }, "geometry": { "type": "LineString", "coordinates": [ [ 2552521.875519214663655, 1197932.751005437457934 ], [ 2552540.625519244465977, 1197882.251005402067676 ] ] } },
+{ "type": "Feature", "properties": { "id": 5, "startManhole": "G", "endManhole": "H" }, "geometry": { "type": "LineString", "coordinates": [ [ 2552540.625519244465977, 1197882.251005402067676 ], [ 2552532.625519241672009, 1197860.501005395548418 ] ] } },
+{ "type": "Feature", "properties": { "id": 6, "startManhole": "H", "endManhole": "C" }, "geometry": { "type": "LineString", "coordinates": [ [ 2552532.625519241672009, 1197860.501005395548418 ], [ 2552494.375519214197993, 1197828.251005389494821 ] ] } },
+{ "type": "Feature", "properties": { "id": 7, "startManhole": "I", "endManhole": "J" }, "geometry": { "type": "LineString", "coordinates": [ [ 2552581.500519288703799, 1197856.50100538181141 ], [ 2552615.000519330147654, 1197813.501005352241918 ] ] } },
+{ "type": "Feature", "properties": { "id": 8, "startManhole": "J", "endManhole": "D" }, "geometry": { "type": "LineString", "coordinates": [ [ 2552615.000519330147654, 1197813.501005352241918 ], [ 2552574.500519306398928, 1197754.501005328726023 ] ] } },
+{ "type": "Feature", "properties": { "id": 9, "startManhole": "D", "endManhole": "E" }, "geometry": { "type": "LineString", "coordinates": [ [ 2552574.500519306398928, 1197754.501005328726023 ], [ 2552659.000519404187799, 1197675.001005270052701 ] ] } }
 ]
 }
