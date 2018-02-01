@@ -22,31 +22,31 @@ coord_x = []
 coord_y = []
 
 # function calculLongueur
-def calculLongueur(pd, pa):
+def calculLongueur(sp, ep):
     """
-        La fonction retourne distance entre les points passes en argument
+        Calculate distance between sp and ep
 
-        :param pd: no point depart
-        :param pa: no point arrivee
+        :param sp: starting point number
+        :param ep: ending point number
         :type pd: string
         :type pa: string
-        :return: distance entre pd et pa
+        :return: distance between sp and ep
         :rtype: float
     """
-    d = getPointGeometry(pd)
-    a = getPointGeometry(pa)
+    d = getPointGeometry(sp)
+    a = getPointGeometry(ep)
     return sqrt(((d[0] - a[0]) ** 2) + ((d[1] - a[1]) ** 2))
 
 # function calculLongueur
 def calculLongueurByGeometry(sp, ep):
     """
-        La fonction retourne distance d'un segment de ligne
+        Calculate distance between sp and ep
 
-        :param sp: coordinates start point
-        :param ep: coordinates end point
+        :param sp: coordinates starting point
+        :param ep: coordinates ending point
         :type sp: list
         :type ep: list
-        :return: longueur du segment
+        :return: distance between sp and ep
         :rtype: float
     """
     return sqrt(((sp[0] - ep[0]) ** 2) + ((sp[1] - ep[1]) ** 2))
@@ -86,18 +86,18 @@ def calculPente(sp, ep):
     return (d[2] - a[2]) / calculLongueur(sp, ep) * 100
 
 # function getLine
-def getLine(no):
+def getLine(id):
     """
-        La fonction retourne la geometrie d'une ligne passée en argument
+        La fonction retourne la geometrie de la ligne selon ID passé en argument
 
-        :param line: geometrie de la ligne
-        :type no: no de ligne
-        :return: nombe de sommet
+        :param id: ID de la ligne
+        :type id: integer
+        :return: geometrie de la ligne
         :rtype: list
     """
     line = []
     for feature in dataT['features']:
-        if no == feature['properties']['id']:
+        if id == feature['properties']['id']:
             line = feature['geometry']['coordinates']
             break
     return line
@@ -108,8 +108,8 @@ def getLineWidth(line):
         La fonction retourne la longueur d'une ligne passée en argument
 
         :param line: geometrie de la ligne
-        :type line: no de ligne
-        :return: longeur de laligne
+        :type line: list
+        :return: longueur de la ligne
         :rtype: float
     """
     lineWidth = 0
@@ -122,16 +122,16 @@ def getLineWidth(line):
     return lineWidth
 
 # function getSegments
-def getSegments(axe):
+def getSegments(axis):
     """
         La fonction retourne toutes les coordonnes de l'axe passé en argument
 
-        :param axe: x ou y
-        :type axe: string
+        :param axis: x or y
+        :type axis: string
         :return: listing de coodonnees de l'axe
         :rtype: list
     """
-    if axe.upper() == "X":
+    if axis.upper() == "X":
         i = 0
     else:
         i = 1
@@ -142,9 +142,7 @@ def getSegments(axe):
         for s in coord:
             c.append(s[i])
 
-
     return c
-
 
 
 # Section tests ----------------------------------------------------------------
