@@ -1,0 +1,18 @@
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Folder><name>OpenLayers export</name>
+<description>Exported on Wed Mar 07 2018 22:03:13 GMT+0100 (CET)</description>
+<Placemark><name>Un titre</name>
+<description>No description available</description>
+<ExtendedData><Data name="pointRadius"><value>6</value></Data><Data name="ext-comp-1178"><value>#ff0000</value></Data></ExtendedData><Point><coordinates>6.813293520200562,46.930353967391575</coordinates></Point></Placemark>
+<Placemark><name>Un titre</name><description>No description available</description><ExtendedData><Data name="pointRadius"><value>6</value></Data><Data name="ext-comp-1188"><value>#ff0000</value></Data></ExtendedData><Point><coordinates>6.814821630393393,46.93021839145762</coordinates></Point></Placemark>
+<Placemark><name>Un titre</name><description>No description available</description><ExtendedData><Data name="pointRadius"><value>6</value></Data><Data name="ext-comp-1198"><value>#ff0000</value></Data></ExtendedData><Point><coordinates>6.815487598439235,46.93039856138423</coordinates></Point></Placemark>
+<Placemark><name>Un titre</name><description>No description available</description><ExtendedData><Data name="pointRadius"><value>6</value></Data><Data name="ext-comp-1208"><value>#ff0000</value></Data></ExtendedData><Point><coordinates>6.8169565785245965,46.930124328906864</coordinates></Point></Placemark>
+<Placemark><name>Un titre</name><description>No description available</description><ExtendedData><Data name="pointRadius"><value>6</value></Data><Data name="ext-comp-1218"><value>#ff0000</value></Data></ExtendedData><Point><coordinates>6.817108201310559,46.93106293309391</coordinates></Point></Placemark>
+<Placemark><name>Un titre</name><description>No description available</description><ExtendedData><Data name="pointRadius"><value>6</value></Data><Data name="ext-comp-1228"><value>#ff0000</value></Data></ExtendedData><Point><coordinates>6.815417933328342,46.93166148518732</coordinates></Point></Placemark>
+<Placemark><name>Un titre</name><description>No description available</description><ExtendedData><Data name="pointRadius"><value>6</value></Data><Data name="ext-comp-1238"><value>#ff0000</value></Data></ExtendedData><Point><coordinates>6.814068763846814,46.92946652909357</coordinates></Point></Placemark>
+<Placemark><name>Un titre</name><description>No description available</description><ExtendedData><Data name="pointRadius"><value>6</value></Data><Data name="ext-comp-1248"><value>#ff0000</value></Data></ExtendedData><Point><coordinates>6.810346008072554,46.93003082893209</coordinates></Point></Placemark>
+<Placemark><name>Un titre</name><description>No description available</description><ExtendedData><Data name="pointRadius"><value>6</value></Data><Data name="ext-comp-1258"><value>#ff0000</value></Data></ExtendedData><Point><coordinates>6.809203617178505,46.9317055751552</coordinates></Point></Placemark>
+<Placemark><name>Un titre</name><description>No description available</description><ExtendedData><Data name="pointRadius"><value>6</value></Data><Data name="ext-comp-1268"><value>#ff0000</value></Data></ExtendedData><Point><coordinates>6.801798898839662,46.92673108127069</coordinates></Point></Placemark>
+<Placemark><name>Un titre</name><description>No description available</description><ExtendedData><Data name="pointRadius"><value>6</value></Data><Data name="ext-comp-1278"><value>#ff0000</value></Data></ExtendedData><Point><coordinates>6.793965624171114,46.924960019544734</coordinates></Point></Placemark>
+</Folder>
+</kml>
