@@ -1,0 +1,17 @@
+{
+"type": "FeatureCollection",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::21781" } },
+"features": [
+{ "type": "Feature", "properties": { "Name": "Un titre", "description": "fontaine"}, "geometry": { "type": "Point", "coordinates": [ 552377.522847193293273, 197886.117913775669876 ] } },
+{ "type": "Feature", "properties": { "Name": "Un titre", "description": "fontaine"}, "geometry": { "type": "Point", "coordinates": [ 552493.772847079322673, 197870.117913768568542 ] } },
+{ "type": "Feature", "properties": { "Name": "Un titre", "description": "fontaine"}, "geometry": { "type": "Point", "coordinates": [ 552544.647847023094073, 197889.742913731053704 ] } },
+{ "type": "Feature", "properties": { "Name": "Un titre", "description": "fontaine"}, "geometry": { "type": "Point", "coordinates": [ 552656.27284691715613, 197858.367913751018932 ] } },
+{ "type": "Feature", "properties": { "Name": "Un titre", "description": "fontaine"}, "geometry": { "type": "Point", "coordinates": [ 552668.647846880136058, 197962.617913594498532 ] } },
+{ "type": "Feature", "properties": { "Name": "Un titre", "description": "fontaine"}, "geometry": { "type": "Point", "coordinates": [ 552540.460346993873827, 198030.180413531634258 ] } },
+{ "type": "Feature", "properties": { "Name": "Un titre", "description": "fontaine"}, "geometry": { "type": "Point", "coordinates": [ 552435.7728471577866, 197786.992913902562577 ] } },
+{ "type": "Feature", "properties": { "Name": "Un titre", "description": "fontaine"}, "geometry": { "type": "Point", "coordinates": [ 552152.7728474290343, 197851.992913880152628 ] } },
+{ "type": "Feature", "properties": { "Name": "Un titre", "description": "fontaine"}, "geometry": { "type": "Point", "coordinates": [ 552067.272847471525893, 198038.867913634254364 ] } },
+{ "type": "Feature", "properties": { "Name": "Un titre", "description": "fontaine"}, "geometry": { "type": "Point", "coordinates": [ 551498.897848177002743, 197490.430414551781723 ] } },
+{ "type": "Feature", "properties": { "Name": "Un titre", "description": "fontaine"}, "geometry": { "type": "Point", "coordinates": [ 550900.710348828695714, 197298.430414977890905 ] } }
+]
+}
