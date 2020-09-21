@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-from math import *
+# from math import *
+import math
 
 class Point:
 
@@ -22,10 +23,10 @@ class Point:
 		return self.pid
 
 	def info(self):
-		print "ID : " + str(self.pid) + "\n" \
+		print("ID : " + str(self.pid) + "\n" \
 		      "X  : " + str(self.x) + "\n" \
 		      "Y  : " + str(self.y) + "\n" \
-		      "Z  : " + str(self.z)
+		      "Z  : " + str(self.z))
 
 class Chambre(Point):
 
@@ -33,14 +34,14 @@ class Chambre(Point):
 		Point.__init__(self, pid, x, y, z)
 
 	def info(self):
-		print "ID : " + str(self.pid) + "\n" \
+		print("ID : " + str(self.pid) + "\n" \
 		      "X  : " + str(self.x) + "\n" \
 		      "Y  : " + str(self.y) + "\n" \
 		      "ZC : " + str(self.z[0])+ "\n" \
 		      "ZR : " + str(self.z[1])+ "\n" \
-		      "ZS : " + str(self.z[2])
+		      "ZS : " + str(self.z[2]))
 		for i in range(len(self.z) - 3):
-			print "ZE" + str(i+1) + ": "  + str(self.z[3+i])
+			print("ZE" + str(i+1) + ": "  + str(self.z[3+i]))
 
 	def getCC(self):
 		return self.z[0]
@@ -67,7 +68,7 @@ class Troncon():
 		self.mat = mat     # materiaux [string]
 
 	def getLongueur(self):
-		return sqrt(((self.chd.getX() - self.cha.getX()) ** 2) + ((self.chd.getY() - self.cha.getY()) ** 2))
+		return math.sqrt(((self.chd.getX() - self.cha.getX()) ** 2) + ((self.chd.getY() - self.cha.getY()) ** 2))
 
 	def getPente(self):
 		return (self.chd.getCS() - self.cha.getCE(self.e)) / self.getLongueur() * 100
@@ -89,7 +90,7 @@ class Troncon():
 		deltaY = self.chd.getY() - self.cha.getY()
 
 		if deltaX != 0:
-			return atan( deltaY / deltaX ) / (2 * pi) * 360
+			return math.atan(( deltaY / deltaX ) / (2 * math.pi * 360))
 		else:
 			return 90
 
@@ -116,11 +117,11 @@ class Troncon():
 		else:
 			prefixe = '<-- '
 
-		print prefixe + mat + " ∅" + diam + " / L=" + longueur + "m / i=" + pente + "%" + sufixe
+		print(prefixe + mat + " ∅" + diam + " / L=" + longueur + "m / i=" + pente + "%" + sufixe)
 
 
 def calculLongueur(pd, pa):
-	return sqrt(((pd.getX() - pa.getX()) ** 2) + ((pd.getY() - pa.getY()) ** 2))
+	return math.sqrt(((pd.getX() - pa.getX()) ** 2) + ((pd.getY() - pa.getY()) ** 2))
 
 def calculePente(pd, pa, e):
 	return (pd.getCS() - pa.getCE(e)) / calculLongueur(pd, pa) * 100
@@ -130,7 +131,7 @@ def calculAngleTexte(pd, pa):
 	deltaY = pd.getY() - pa.getY()
 
 	if deltaX != 0:
-		return atan( deltaY / deltaX ) / (2 * pi) * 360
+		return math.atan(( deltaY / deltaX ) / (2 * math.pi) * 360)
 	else:
 		return 90
 """
@@ -223,14 +224,14 @@ troncons.append(Troncon(ch100, ch108, 1, 150, 'PVC'))
     TEST
 **************************************************************************** """
 
-print infoTroncon(ch100, ch101, 1) + '\t\t' + str(calculAngleTexte(ch100, ch101))
-print infoTroncon(ch100, ch102, 1) + '\t\t' + str(calculAngleTexte(ch100, ch102))
-print infoTroncon(ch100, ch103, 1) + '\t\t' + str(calculAngleTexte(ch100, ch103))
-print infoTroncon(ch100, ch104, 1) + '\t\t' + str(calculAngleTexte(ch100, ch104))
-print infoTroncon(ch100, ch105, 1) + '\t\t' + str(calculAngleTexte(ch100, ch105))
-print infoTroncon(ch100, ch106, 1) + '\t\t' + str(calculAngleTexte(ch100, ch106))
-print infoTroncon(ch100, ch107, 1) + '\t\t' + str(calculAngleTexte(ch100, ch107))
-print infoTroncon(ch100, ch108, 1) + '\t\t' + str(calculAngleTexte(ch100, ch108))
+print(infoTroncon(ch100, ch101, 1) + '\t\t' + str(calculAngleTexte(ch100, ch101)))
+print(infoTroncon(ch100, ch102, 1) + '\t\t' + str(calculAngleTexte(ch100, ch102)))
+print(infoTroncon(ch100, ch103, 1) + '\t\t' + str(calculAngleTexte(ch100, ch103)))
+print(infoTroncon(ch100, ch104, 1) + '\t\t' + str(calculAngleTexte(ch100, ch104)))
+print(infoTroncon(ch100, ch105, 1) + '\t\t' + str(calculAngleTexte(ch100, ch105)))
+print(infoTroncon(ch100, ch106, 1) + '\t\t' + str(calculAngleTexte(ch100, ch106)))
+print(infoTroncon(ch100, ch107, 1) + '\t\t' + str(calculAngleTexte(ch100, ch107)))
+print(infoTroncon(ch100, ch108, 1) + '\t\t' + str(calculAngleTexte(ch100, ch108)))
 
 troncons[7].setDiametre(500)
 troncons[7].setMateriaux('PE')
