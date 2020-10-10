@@ -67,25 +67,25 @@ class Troncon():
 		self.diam = diam   # diametre [integer]
 		self.mat = mat     # materiaux [string]
 
-	def getLongueur(self):
+	def getLength(self):
 		return math.sqrt(((self.chd.getX() - self.cha.getX()) ** 2) + ((self.chd.getY() - self.cha.getY()) ** 2))
 
-	def getPente(self):
-		return (self.chd.getCS() - self.cha.getCE(self.e)) / self.getLongueur() * 100
+	def getSlope(self):
+		return (self.chd.getCS() - self.cha.getCE(self.e)) / self.getLength() * 100
 
 	def getDiametre(self):
 		return str(self.diam)
 
-	def getMateriaux(self):
+	def getMaterial(self):
 		return str(self.mat)
 
 	def setDiametre(self, diam):
 		self.diam = diam
 
-	def setMateriaux(self, mat):
+	def setMaterial(self, mat):
 		self.mat = mat
 
-	def getAngleTexte(self):
+	def getTextAngle(self):
 		deltaX = self.chd.getX() - self.cha.getX()
 		deltaY = self.chd.getY() - self.cha.getY()
 
@@ -94,7 +94,7 @@ class Troncon():
 		else:
 			return 90
 
-	def getSensEcoulement(self):
+	def getDirection(self):
 		if self.cha.getX() > self.chd.getX():
 			return "d"
 
@@ -105,10 +105,11 @@ class Troncon():
 			return "g"
 
 	def info(self):
-		longueur = ("%.2f" % self.getLongueur())
-		pente = ("%.2f" % self.getPente())
-		sens = self.getSensEcoulement()
-		mat = self.getMateriaux()
+		longueur = ("%.2f" % self.getLength
+())
+		pente = ("%.2f" % self.getSlope())
+		sens = self.getDirection()
+		mat = self.getMaterial()
 		diam = self.getDiametre()
 		prefixe = ''
 		sufixe = ''
@@ -120,13 +121,23 @@ class Troncon():
 		print(prefixe + mat + " ∅" + diam + " / L=" + longueur + "m / i=" + pente + "%" + sufixe)
 
 
-def calculLongueur(pd, pa):
+def calculateLength(pd, pa):
+	if not type(pd) is Chambre or not type(pa) is Chambre:
+  		raise TypeError("Only Chambre are allowed")
 	return math.sqrt(((pd.getX() - pa.getX()) ** 2) + ((pd.getY() - pa.getY()) ** 2))
 
-def calculePente(pd, pa, e):
-	return (pd.getCS() - pa.getCE(e)) / calculLongueur(pd, pa) * 100
+def calculateSlope(pd, pa, e):
+	if not type(pd) is Chambre or not type(pa) is Chambre:
+  		raise TypeError("Only Chambre are allowed")
+	if not type(e) is int:
+  		raise TypeError("Only Int are allowed")
 
-def calculAngleTexte(pd, pa):
+	return (pd.getCS() - pa.getCE(e)) / calculateLength(pd, pa) * 100
+
+def calculateTextAngle(pd, pa):
+	if not type(pd) is Chambre or not type(pa) is Chambre:
+  		raise TypeError("Only Chambre are allowed")
+
 	deltaX = pd.getX() - pa.getX()
 	deltaY = pd.getY() - pa.getY()
 
@@ -135,7 +146,7 @@ def calculAngleTexte(pd, pa):
 	else:
 		return 90
 """
-def calculAngleTexte(pd, pa):
+def calculateTextAngle(pd, pa):
 	a = calculeAngleDeg(pd, pa)
 	if pa.getX() > pd.getX():
 		if pa.getY() > pd.getY():
@@ -154,7 +165,10 @@ def calculAngleTexte(pd, pa):
 	return at
 """
 
-def sensEcoulement(pd, pa):
+def defineDirection(pd, pa):
+	if not type(pd) is Chambre or not type(pa) is Chambre:
+  		raise TypeError("Only Chambre are allowed")
+
 	if pa.getX() > pd.getX():
 		return "d"
 
@@ -165,17 +179,22 @@ def sensEcoulement(pd, pa):
 		return "g"
 
 def infoTroncon(pd, pa, e):
-	longueur = calculLongueur(pd, pa)
-	pente = calculePente(pd, pa, e)
-	sens = sensEcoulement(pd, pa)
-	prefixe = ''
-	sufixe = ''
-	if sens == 'd':
-		sufixe = ' -->'
-	else:
-		prefixe = '<-- '
+	if not type(pd) is Chambre or not type(pa) is Chambre:
+  		raise TypeError("Only Chambre are allowed")
+	if not type(e) is int:
+  		raise TypeError("Only Int are allowed")
 
-	return prefixe + "L=" + str(round(longueur,3)) + "m / i=" + str(round(pente,2)) + "%" + sufixe
+	length = calculateLength(pd, pa)
+	slope = calculateSlope(pd, pa, e)
+	direction = defineDirection(pd, pa)
+	prefix = ''
+	sufix = ''
+	if direction == 'd':
+		sufix = ' -->'
+	else:
+		prefix = '<-- '
+
+	return prefix + "L=" + str(round(length,3)) + "m / i=" + str(round(slope,2)) + "%" + sufix
 
 """ ****************************************************************************
     DATA
@@ -224,17 +243,17 @@ troncons.append(Troncon(ch100, ch108, 1, 150, 'PVC'))
     TEST
 **************************************************************************** """
 
-print(infoTroncon(ch100, ch101, 1) + '\t\t' + str(calculAngleTexte(ch100, ch101)))
-print(infoTroncon(ch100, ch102, 1) + '\t\t' + str(calculAngleTexte(ch100, ch102)))
-print(infoTroncon(ch100, ch103, 1) + '\t\t' + str(calculAngleTexte(ch100, ch103)))
-print(infoTroncon(ch100, ch104, 1) + '\t\t' + str(calculAngleTexte(ch100, ch104)))
-print(infoTroncon(ch100, ch105, 1) + '\t\t' + str(calculAngleTexte(ch100, ch105)))
-print(infoTroncon(ch100, ch106, 1) + '\t\t' + str(calculAngleTexte(ch100, ch106)))
-print(infoTroncon(ch100, ch107, 1) + '\t\t' + str(calculAngleTexte(ch100, ch107)))
-print(infoTroncon(ch100, ch108, 1) + '\t\t' + str(calculAngleTexte(ch100, ch108)))
+print(infoTroncon(ch100, ch101, 1) + '\t\t' + str(calculateTextAngle(ch100, ch101)))
+print(infoTroncon(ch100, ch102, 1) + '\t\t' + str(calculateTextAngle(ch100, ch102)))
+print(infoTroncon(ch100, ch103, 1) + '\t\t' + str(calculateTextAngle(ch100, ch103)))
+print(infoTroncon(ch100, ch104, 1) + '\t\t' + str(calculateTextAngle(ch100, ch104)))
+print(infoTroncon(ch100, ch105, 1) + '\t\t' + str(calculateTextAngle(ch100, ch105)))
+print(infoTroncon(ch100, ch106, 1) + '\t\t' + str(calculateTextAngle(ch100, ch106)))
+print(infoTroncon(ch100, ch107, 1) + '\t\t' + str(calculateTextAngle(ch100, ch107)))
+print(infoTroncon(ch100, ch108, 1) + '\t\t' + str(calculateTextAngle(ch100, ch108)))
 
 troncons[7].setDiametre(500)
-troncons[7].setMateriaux('PE')
+troncons[7].setMaterial('PE')
 
 for t in troncons:
 	t.info()
@@ -242,8 +261,8 @@ for t in troncons:
 ch100.info()
 
 """
-longueur = calculLongueur(p1, p2)
-pente = calculePente(p1, p2)
+longueur = calculateLength(p1, p2)
+pente = calculateSlope(p1, p2)
 azi = calculeAngleDeg(p1, p2)
 angleTexte = calculeAngleTexte(p1, p2)
 
@@ -252,19 +271,9 @@ print
 p2.getInfo()
 print
 
-print sensEcoulement(p1, p2) + "L=" + str(round(longueur,3)) + "m / i=" + str(round(pente,2)) + "%"
+print defineDirection(p1, p2) + "L=" + str(round(longueur,3)) + "m / i=" + str(round(pente,2)) + "%"
 print azi
-print angleTexte
-print
-ch1.getInfo()
-print
-ch2.getInfo()
-print "CH : " + ch1.getID() + " CC : " + str(ch1.getCC())+ " CR: " + str(ch1.getCR())+ " CS : " + str(ch1.getCS()) + " CE1 : " + str(ch1.getCE(1))
-print "CH : " + ch2.getID() + " CC : " + str(ch2.getCC())+ " CR: " + str(ch2.getCR())+ " CS : " + str(ch2.getCS()) + " CE1 : " + str(ch2.getCE(1))
-# test pour mettre toute la liste de Z dans un champ SQLITE (type BLOB) et le relire ensuite
-li = repr([558.12, 556.57, 556.57, 558.12])
-il = eval(li)
-for i in range(len(il)):
-	print il[i]
+print angleTextedifineDirection
+difineDirection
 
 """
