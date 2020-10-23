@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
-from math import *
-import matplotlib.pyplot as plt
 import json
-from geojson import Feature, Point
+import math
 from pprint import pprint
+
+import matplotlib.pyplot as plt
+from geojson import Feature, Point
 
 with open('points_sample.geojson') as f:
     dataP = json.load(f)
@@ -22,6 +22,8 @@ coord_x = []
 coord_y = []
 
 # function calculLongueur
+
+
 def calculLongueur(sp, ep):
     """
         Calculate distance between sp and ep
@@ -35,9 +37,11 @@ def calculLongueur(sp, ep):
     """
     d = getPointGeometry(sp)
     a = getPointGeometry(ep)
-    return sqrt(((d[0] - a[0]) ** 2) + ((d[1] - a[1]) ** 2))
+    return math.sqrt(((d[0] - a[0]) ** 2) + ((d[1] - a[1]) ** 2))
 
 # function calculLongueur
+
+
 def calculLongueurByGeometry(sp, ep):
     """
         Calculate distance between sp and ep
@@ -49,11 +53,13 @@ def calculLongueurByGeometry(sp, ep):
         :return: distance between sp and ep
         :rtype: float
     """
-    return sqrt(((sp[0] - ep[0]) ** 2) + ((sp[1] - ep[1]) ** 2))
+    return math.sqrt(((sp[0] - ep[0]) ** 2) + ((sp[1] - ep[1]) ** 2))
 
 # Section fonctions ------------------------------------------------------------
 
 # function getPointGeometry
+
+
 def getPointGeometry(no):
     """
         La fonction retourne les coodonnees du point passe en argument
@@ -70,6 +76,8 @@ def getPointGeometry(no):
     return coord
 
 # function calculePente
+
+
 def calculPente(sp, ep):
     """
         La fonction retourne la pente en % entre les points passes en argument
@@ -86,6 +94,8 @@ def calculPente(sp, ep):
     return (d[2] - a[2]) / calculLongueur(sp, ep) * 100
 
 # function getLine
+
+
 def getLine(id):
     """
         La fonction retourne la geometrie de la ligne selon ID passé en argument
@@ -103,6 +113,8 @@ def getLine(id):
     return line
 
 # function getLineWidth
+
+
 def getLineWidth(line):
     """
         La fonction retourne la longueur d'une ligne passée en argument
@@ -113,7 +125,7 @@ def getLineWidth(line):
         :rtype: float
     """
     lineWidth = 0
-    if len(line)>1:
+    if len(line) > 1:
         for s in range(len(line)-1):
             sp = line[s]
             ep = line[s+1]
@@ -122,6 +134,8 @@ def getLineWidth(line):
     return lineWidth
 
 # function getSegments
+
+
 def getSegments(axis):
     """
         La fonction retourne toutes les coordonnes de l'axe passé en argument
@@ -148,19 +162,20 @@ def getSegments(axis):
 # Section tests ----------------------------------------------------------------
 
 print("=== TEST functions ===")
-print("coordinates for point A expect [ 2552540.625519244465977, 1197882.251005402067676 ]")
+print(
+    "coordinates for point A expect [ 2552540.625519244465977, 1197882.251005402067676 ]")
 print("-->  : ", getPointGeometry(trace[0]))
 print("calculate distance between A and B")
-print(round(calculLongueur("A", "B"),2), "m")
+print(round(calculLongueur("A", "B"), 2), "m")
 print("calculate slope between A and B")
-print(round(calculPente("A", "B"),2), "%")
+print(round(calculPente("A", "B"), 2), "%")
 
 print(type(getPointGeometry(trace[0])))
 
 print("=== Line ===")
-print("Multi segments line width :", round(getLineWidth(getLine(9)),2), "m")
-print("Single segments line (A to B) width :", round(getLineWidth(getLine(1)),2), "m")
-
+print("Multi segments line width :", round(getLineWidth(getLine(9)), 2), "m")
+print("Single segments line (A to B) width :",
+      round(getLineWidth(getLine(1)), 2), "m")
 
 
 """
@@ -186,8 +201,8 @@ plt.text(542674.80, 151707.27, '45')
 
 #plt.title("Profil en long")
 #plt.plot([50,100,150,200], [1,2,3,4])
-#plt.xlabel('Distance')
-#plt.ylabel('Altitude')
+# plt.xlabel('Distance')
+# plt.ylabel('Altitude')
 #plt.axis([80, 180, 1, 10])
 
 for feature in dataP['features']:
@@ -201,6 +216,6 @@ x = getSegments("X")
 y = getSegments("Y")
 plt.grid(True)
 plt.plot(coord_x, coord_y, "o")
-plt.plot(x,y)
+plt.plot(x, y)
 plt.grid(True)
 plt.show()
